@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>From telephone triage to a multi-channel eHealth triage service, does it make a difference?</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="  Meeting - Health Economics and Management group" />
+    <meta name="date" content="2019-12-20" />
+    <link href="presentation_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <script src="presentation_files/kePrint-0.0.1/kePrint.js"></script>
+    <link rel="stylesheet" href="default.css" type="text/css" />
+    <link rel="stylesheet" href="fonts.css" type="text/css" />
+    <link rel="stylesheet" href="animate.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# From telephone triage to a multi-channel eHealth triage service, does it make a difference?
+## H. Vanconcelos, A. Peralta-Santos
+### <br/><br/>Meeting - Health Economics and Management group
+### 20 December 2019
+
+---
+
+
+
+# About Me
+.left-column[
+**Background**
+
+- MD and Public Health Specialist 
+- MPH at ENSP
+- Ph.D. (expected 2021/22) at University of Washington  
+
+**Research interests**
+
+- Quantitative Health Policy Evaluation
+- Impact of Health Coverage and Insurance Expansion
+- Time-Series
+- Causal inference (newbie)
+- Machine Learning (newbie)
+
+
+**Telephone Triage Project**
+- The project started at the course "Data Science and policy evaluation."
+- Code and data are available on GitHub uppon request (private repo)
+]
+
+
+
+---
+
+
+class: inverse, center, middle, animated, slideInRight
+
+# INTRODUCTION
+
+---
+# Introduction
+
+**Emergency care&lt;sup&gt;1&lt;/sup&gt;**
++ Growing demand, which can adversely affect the provider workload and quality of care
+
+--
+
+**Telephone triage system&lt;sup&gt;1&lt;/sup&gt;**
++ Improve the appropriateness, 
++ Timeliness, 
++ Quality of care of emergency care 
++ Patient Outcomes
+
+--
+
+**Telephone triage characteristic**
+- Nurse-led team 
+- Algorithmically-oriented advice, coaching, or A&amp;E service forwarding
+- Widespread: United Kingdom, France, Belgium, Australia, and Denmark
+
+.footnote[
+.
+
+[1] Organization WH, others. Emergency medical services systems in the European Union: Report of an assessment project co-ordinated by the world health organization-data book. Copenhagen: WHO Regional Office for Europe 2008.
+]
+
+---
+# Introduction
+
+**Telephone triage systems in Portugal**
++ 1999-2001 Pediatrics-only telephone triage system in the Lisbon area
++ 2002-2007 Expansion all country (mainland)
++ 2008-2016 Expansion to all ages and all country (mainland) _“Saúde 24”_
++ 2017-Present Expansion to allow e-mail contact and online information, appointment scheduling, and other services _“SNS 24”_
+
+--
+
+**Policy intervention**
++ New contractor - maximum budget of 30million euros from 2017-2020 (4 years)
++ Complex system of payment, where some types of calls are more valued than others
++ 10,000 standard calls per can be eligible for payment
++ quality indicators linked with  financial penalties - access and customer satisfaction
+
+
+---
+background-image: url(https://media.giphy.com/media/pPhyAv5t9V8djyRFJH/giphy.gif)
+background-position: 50% 50%
+background-size: 50%
+class: center, bottom, inverse
+
+---
+class: middle, animated, slideInRight
+
+# Introduction
+
+**Relevance**
++ Portugal has the highest emergency care visits ration of OECD countries
++ 31.3% of inappropriate emergency care visits
++ Telephone triage can increase efficiency by achieving the same outcomes at a lower cost
+ 
+
+---
+class: inverse, center, middle
+
+# What was the impact on the demand and quality indicators of the Telephone triage service expansion?
+
+---
+
+class: inverse, center, middle, animated, slideInRight
+
+# METHODS
+
+---
+# Methods
+
+**Study design**
++ Interrupted time-series analysis
++ Started in December 2016 and ended on July 2019
++ Intervention was rolled up nationally at the same time 
+
+--
+
+**Intervention design and implementation strategy**
+1. The services were centralized in a single physical location
+2. Email contact was introduced, as well as a dedicated website with information
+3. Counseling service for over-the-counter medication
+4. Counseling and referencing service for people with HIV and HBV reactive test
+5. Administrative services like (scheduling an appointment with a general practitioner, applying for exemption from point-of-care copayments, providing information about surgical vouchers)
+6. The supervision of the services changed from the Portuguese Directorate of Health to the Shared Services in the Ministry of Health
+
+--
+
+**September 2017 - deployed service expansion**
+
+---
+
+# Methods
+
+**Data source**
++ SNS 24 and makes publicly available in the “transparency portal.”
++ No missing data
++ Outliers (coincident with the seasonal flu epidemic)
+
+--
+
+**Outcome and variables**
++ Outcome 1. Number of calls answered, 
++ Outcome 2. Percentage of __NOT answered__ calls by the operator within 15 seconds, over the total number of calls received
+
+--
+
+**Data analysis**
++ Before the service expansion (December 2016 and August 2017) 
++ After the service expansion (September 2017 and July 2019)
++ Fixed effects of each month (seasonality)
++ Poison distribution with a link log
+
+`$$E(log(Y_t)) = \beta_0 + \beta_{1-12} \sum_{m=1}^{m=12} MONTH_t + \beta_{13} TIME_t + \beta_{14} INT + \beta_{15} TIME_t*INT + log(POP_t) + \epsilon_t$$`
+
+---
+class: inverse, center, middle, animated, slideInRight
+
+# RESULTS
+
+---
+# Results
+
+
+
+
+
+
+
+
+|Variable                           |Before policy expansion |After policy expansion |
+|:----------------------------------|:-----------------------|:----------------------|
+|Weeks                              |n=52                    |n=106                  |
+|Mean number of weekly calls        |29,400                  |37,000                 |
+|SD weekly calls                    |7790                    |14000                  |
+|Type of calls                      |.                       |.                      |
+|Referral to emergency care (%)     |27.67                   |28.23                  |
+|Self-care (%)                      |25.77                   |24.76                  |
+|Other (%)                          |21.46                   |23.32                  |
+|Primary care (%)                   |21.35                   |19.26                  |
+|Prehospital Emergency Care (%)     |3.5                     |4.04                   |
+|Poison Control hot-line (%)        |0.91                    |0.82                   |
+|Access                             |.                       |.                      |
+|Mean weekly not answered calls (%) |11.2                    |2.47                   |
+|SD weekly not answered calls (%)   |5.9                     |4                      |
+
+---
+# Results
+
+
+
+
+
+&lt;table class="table table-striped table-hover table" style="margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Effect of service expansion on the weekly number of calls to SNS 24&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Variable &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Estimate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Low 95% CI &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; High 95% CI &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; p Value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Baseline weekly n. calls/100.000inh &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 411.474 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 344.594 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 493.680 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Trend before policy change &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.002 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.014 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.014 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Trend after policy change &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.988 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.982 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.995 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Immediate policy effect &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.462 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.039 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+# Results
+
+.center[
+&lt;img src="figure1.png" width="800" height = "550"&gt;
+]
+
+---
+# Results
+
+
+&lt;table class="table table-striped table-hover table" style="margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Effect of policy change in SNS24 on percentage of abandoned calls  by the user before arriving at the agent after 15 seconds&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Variable &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Estimate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Low 95% CI &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; High 95% CI &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; P Value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Baseline weekly % of abandoned calls &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.362 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.618 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15.713 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt;0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Trend before policy change &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.021 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.009 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.032 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt;0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Trend after policy change &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.940 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.928 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.952 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt;0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Immediate policy effect &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.362 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.236 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.564 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt;0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+# Results
+
+.center[
+&lt;img src="figure2.png" width="800" height = "550"&gt;
+]
+
+---
+
+class: inverse, center, middle, animated, slideInRight
+
+# DISCUSSION
+
+---
+# Discussion
+
+**Summary**
++ 21.6% increase in demand right after the change in policy
++ Decreased at an average rate of 1.2% per week after the policy change
++ Improved quality of service
+
+--
+
+**Interpretation change in demand**
++ Novelty effect and better-informed individuals
++ Substitution effect | Under a constant (true) demand | Improved quality of service
++ Perceived quality and utility is itself a driver of demand
++ Decreasing trend after the service expansion 'wash-out.'
+
+---
+# Discussion
+
+**Interpretation change in demand**
++ Durand et al. Patients value more accessibility than the appropriateness of services used
++ Implicit celling to the demand (contract design)
+
+**Limitations**
++ Changes in the Emergency Department's access policies, like co-payments
++ Residual confounding 
++ Seasonality (fixed effects)
+
+---
+
+background-image: url(https://media.giphy.com/media/Wn74RUT0vjnoU98Hnt/giphy.gif)
+background-position: 50% 50%
+background-size: 40%
+class: center, middle, inverse
+---
+
+class: middle, animated, slideInRight
+# Follow me
+
+## Twitter: [**@andre_peralta**](https://twitter.com/andre_peralta)
+## GitHub: [**aperaltasantos**](https://github.com/aperaltasantos)  
+## Website: [**www.aperaltasantos.com**](https://www.aperaltasantos.com/)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

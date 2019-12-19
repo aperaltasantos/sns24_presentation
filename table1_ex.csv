@@ -1,0 +1,14 @@
+Variable,Before policy expansion,After policy expansion
+Weeks,n=52,n=106
+Mean number of weekly calls,"29,400","37,000"
+SD weekly calls,7790,14000
+Type of calls,.,.
+Referral to emergency care (%),27.67,28.23
+Self-care (%),25.77,24.76
+Other (%),21.46,23.32
+Primary care (%),21.35,19.26
+Prehospital Emergency Care (%),3.5,4.04
+Poison Control hot-line (%),0.91,0.82
+Access,.,.
+Mean weekly not answered calls (%),11.2,2.47
+SD weekly not answered calls (%),5.9,4

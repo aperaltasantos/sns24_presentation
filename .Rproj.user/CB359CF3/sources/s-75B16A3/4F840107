@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1576770911075.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4146279775",
+    "id" : "4F840107",
+    "lastKnownWriteTime" : 1576769003,
+    "last_content_update" : 1576769003,
+    "path" : "~/Documents/GitHub/sns24_presentation/presentation.Rmd",
+    "project_path" : "presentation.Rmd",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
